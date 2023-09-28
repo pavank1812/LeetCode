@@ -1,14 +1,13 @@
 class Solution {
-    public int[] sortArrayByParity(int[] nums) {
+    public int[] sortArrayByParity(int[] nums){
         if(nums.length == 1)
             return nums;
-        
-        int start = 0 , end = nums.length - 1;
-        while(start<end) {
-            if(nums[start] %2==0){
+        int start = 0, end = nums.length-1;
+        while(start<end){
+            if(nums[start]%2 == 0){
                 start++;
             }else{
-                if(nums[end]%2 !=0){
+                if(nums[end]%2 != 0){
                     end--;
                 }else{
                     int temp = nums[start];
@@ -22,7 +21,4 @@ class Solution {
         return nums;
     }
 }
-
-
-
 
