@@ -1,21 +1,11 @@
-// class Solution {
-//     public int missingNumber(int[] nums) {
-//         int n = nums.length;
-//         int totalSum = n*(n+1)/2;
-//         for(int i=0;i<n;i++){
-//             totalSum -= nums[i];
-//         }
-//         return totalSum;
-//     }
-// }
-
 class Solution {
-    public int missingNumber(int[] nums){
+    public int missingNumber(int[] nums) {
         int n = nums.length;
-        int totalSum = n*(n+1)/2;
-        for(int i = 0; i < n;i++){
-            totalSum -= nums[i];
+        int expectedSum = n*(n+1)/2;
+        int actualSum = 0;
+        for(int num: nums){
+            actualSum += num;
         }
-        return totalSum;
+        return expectedSum - actualSum;
     }
 }
