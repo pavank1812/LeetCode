@@ -1,27 +1,27 @@
 class Solution {
-  public List<String> letterCombinations(String digits) {
-    if (digits.isEmpty())
-      return new ArrayList<>();
+    public List<String> letterCombinations(String digits) {
+         List<String> result = new ArrayList<>(); 
+         if (digits == null || digits.isEmpty())
+         {
+             return result;
+         }
+        String[] mapping = {"abc" , "def" , "ghi" , "jkl" , "mno" , "pqrs" , "tuv" , "wxyz"};
+        result.add("");
+        
+        
+        for (char digit : digits.toCharArray()) {
+            String letters = mapping[digit - '2'];
+            int size = result.size();
 
-    List<String> ans = new ArrayList<>();
+            while (size-- > 0) {
+                String current = result.remove(0);
+                for (char letter : letters.toCharArray()) {
+                    result.add(current + letter);
+                }
+            }
+        }
 
-    dfs(digits, 0, new StringBuilder(), ans);
-    return ans;
-  }
-
-  private static final String[] digitToLetters = {"",    "",    "abc",  "def", "ghi",
-                                                  "jkl", "mno", "pqrs", "tuv", "wxyz"};
-
-  private void dfs(String digits, int i, StringBuilder sb, List<String> ans) {
-    if (i == digits.length()) {
-      ans.add(sb.toString());
-      return;
+        return result;
     }
-
-    for (final char c : digitToLetters[digits.charAt(i) - '0'].toCharArray()) {
-      sb.append(c);
-      dfs(digits, i + 1, sb, ans);
-      sb.deleteCharAt(sb.length() - 1);
-    }
-  }
 }
+
